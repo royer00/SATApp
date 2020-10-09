@@ -9,10 +9,10 @@
 @if (User.IsInRole("Admin"))
 {
     <p class="text-center">
-        @Html.ActionLink("Create A New Student", "Create", null, new { @class = "btn btn-lg btn-danger" })
+        @Html.ActionLink("Create A New Student", "Create", null, new { @class = "btn  btn-danger" })
     </p>
     <p class="text-center">
-        @Html.ActionLink("View Withdrawn", "Withdrawn", null, new { @class = "btn btn-lg btn-success" })
+        @Html.ActionLink("View Withdrawn", "Withdrawn", null, new { @class = "btn btn-primary" })
     </p>
 }
 

@@ -83,3 +83,12 @@
         }
     </div>
 </div>
+@section scripts{
+    <script>
+            $(document).ready(function () {
+                $('html,body').animate({
+                    scrollTop: $("#main").offset().top
+                }, 1000);
+            });
+    </script>
+}
