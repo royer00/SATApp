@@ -7,8 +7,8 @@
 
 <div class=" text-center col-md-10 offset-1 ">
     <h2>@Model.FullName</h2>
-    <img src="~/Content/assets/img/@Model.PhotoURL" alt="@Model.FullName" />
-    <div class="form-style mt-5 ">
+   
+    <div class="form-style mt-5 mb-5">
         <div class="row">
             <div class="col-md-4" style="padding: 2em;">
                 <h4>
@@ -45,17 +45,17 @@
                 <span class="text-primary"> @item.ScheduledClass.Cours.CourseName</span>
             }
         </h4>
+        @if (User.IsInRole("Admin"))
+        {
+            <p>
+                @Html.ActionLink("Edit Student", "Edit", new { id = Model.StudentID }, new { @class = "btn btn-danger" })
+                @Html.ActionLink("Exit", "Index", null, new { @class = "btn btn-primary" })
+            </p>
+        }
 
-        <p>
-            @Html.ActionLink("Edit Student", "Edit", new { id = Model.StudentID }, new { @class="btn btn-danger"}) 
-            @Html.ActionLink("Exit", "Index", null, new { @class="btn btn-primary"})
-        </p>
     </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.StudentID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
 @section scripts
 {
     <script>

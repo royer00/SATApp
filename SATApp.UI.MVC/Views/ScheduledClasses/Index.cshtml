@@ -62,9 +62,12 @@
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.ScheduledClassID }) |
                     @Html.ActionLink("Details", "Details", new { id = item.ScheduledClassID }) <br />
+                    @if (User.IsInRole("Admin"))
+                    {
+                        @Html.ActionLink("Activate", "Delete", new { id = item.ScheduledClassID }, new { @class = "btn btn-danger" })
+                        @Html.ActionLink("Deactivate", "Delete", new { id = item.ScheduledClassID }, new { @class = "btn btn-primary" })
+                    }
 
-                    @Html.ActionLink("Activate", "Delete", new { id = item.ScheduledClassID }, new { @class = "btn btn-danger" })
-                    @Html.ActionLink("Deactivate", "Delete", new { id = item.ScheduledClassID }, new { @class = "btn btn-primary" })
                 </td>
             </tr>
         }
