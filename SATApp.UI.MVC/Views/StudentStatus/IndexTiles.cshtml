@@ -1,0 +1,59 @@
+﻿@model IEnumerable<SATApp.DATA.EF.StudentStatus>
+
+@{
+    ViewBag.Title = "Student Statuses(Tile Layout)";
+}
+
+<h2 class="text-center mt-5">@ViewBag.Title</h2>
+
+<p class="text-center">
+    @Html.ActionLink("Add a Student Status", "Create", null, new { @class = "btn btn-danger" })
+</p>
+<p class="text-center">
+    @Html.ActionLink("Table View", "Index", null, new { @class = "btn btn-primary" })
+</p>
+
+<div class="row offset-1">
+    @foreach (var item in Model)
+    {
+
+        <div class="col-md-3 text-center mb-3" style="border: 2px solid black; height: 200px; margin: 2em; box-shadow: 5px 5px black">
+            <h3>@Html.DisplayFor(modelItem => item.SSName)</h3>
+            <p>@Html.DisplayFor(modelItem => item.SSDescription)</p>
+            @if (User.IsInRole("Admin"))
+            {
+
+                @Html.ActionLink("Edit", "Edit", new { id = item.SSID }) <span>|</span>
+                @Html.ActionLink("Details", "Details", new { id = item.SSID }) <span>|</span>
+                @Html.ActionLink("Delete", "Delete", new { id = item.SSID })
+
+            }
+        </div>
+
+    }
+</div>
+@*@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SSName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SSDescription)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.SSID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.SSID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.SSID })
+            </td>
+        </tr>
+    }*@
+@section scripts{
+    <script>
+    $(document).ready(function () {
+        $('html,body').animate({
+            scrollTop: $("#main").offset().top
+        }, 1000);
+    });
+    </script>
+
+}

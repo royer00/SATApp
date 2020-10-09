@@ -1,0 +1,55 @@
+﻿@model IEnumerable<SATApp.DATA.EF.StudentStatus>
+
+@{
+    ViewBag.Title = "Student Statuses";
+}
+
+<h2 class="text-center mt-5">@ViewBag.Title</h2>
+
+<p class="text-center">
+    @Html.ActionLink("Add a Student Status", "Create", null, new { @class = "btn btn-danger" })
+</p>
+<p class="text-center">
+    @Html.ActionLink("View as Tiles", "IndexTiles", null, new { @class = "btn btn-primary" })
+</p>
+<table class="table myTable">
+    <thead>
+        <tr>
+            <th>
+                Student Status Name
+            </th>
+            <th>
+                Student Status Description
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SSName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SSDescription)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.SSID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.SSID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.SSID })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@section scripts{
+    <script>
+    $(document).ready(function () {
+        $('html,body').animate({
+            scrollTop: $("#main").offset().top
+        }, 1000);
+    });
+    </script>
+
+}
