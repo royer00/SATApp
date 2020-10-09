@@ -199,7 +199,7 @@ namespace SATApp.UI.MVC.Controllers
             //return RedirectToAction("Index");
 
             Student student = db.Students.Find(id);
-            if (student.SSID != 7)
+            if (student.SSID == 2)
             {
                 student.SSID = 7;
             }
@@ -209,7 +209,7 @@ namespace SATApp.UI.MVC.Controllers
             }
             else
             {
-                return RedirectToAction("Edit");
+                return RedirectToAction("Edit", new { id});
             }
             db.SaveChanges();
             return RedirectToAction("Index");
