@@ -1,42 +1,59 @@
 ﻿@model SATApp.DATA.EF.Enrollment
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Enrollment Details";
 }
 
-<h2>Details</h2>
+<h2 class="text-center">@ViewBag.Title</h2>
 
-<div>
-    <h4>Enrollment</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.EnrollmentDate)
-        </dt>
+<div class="text-center form-style col-md-8 offset-2 mt-5 mb-5">
+    <div>
 
-        <dd>
-            @Html.DisplayFor(model => model.EnrollmentDate)
-        </dd>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ScheduledClass.Cours.CourseName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ScheduledClass.Cours.CourseName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.EnrollmentDate)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ScheduledClass.InstructorName)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.EnrollmentDate)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ScheduledClass.InstructorName)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ScheduledClass.InstructorName)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Student.FirstName)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ScheduledClass.InstructorName)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Student.FirstName)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Student.FullName)
+            </dt>
 
-    </dl>
+            <dd>
+                @Html.DisplayFor(model => model.Student.FullName)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit Enrollment", "Edit", new { id = Model.EnrollmentID }, new { @class = "btn btn-danger" })
+        @Html.ActionLink("Exit", "Index", null, new { @class = "btn btn-primary" })
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.EnrollmentID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+@section scripts{
+    <script>
+    $(document).ready(function () {
+        $('html,body').animate({
+            scrollTop: $("#main").offset().top
+        }, 1000);
+    });
+    </script>
+}

@@ -7,11 +7,12 @@
 <h2 class="text-center mt-5">@ViewBag.Title</h2>
 
 <p class="text-center">
-    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-danger" })
+    @Html.ActionLink("Create A New Enrollment", "Create", null, new { @class = "btn btn-danger" })
 </p>
 <table class="table myTable">
     <thead>
         <tr>
+            <th>@Html.DisplayNameFor(model => model.ScheduledClass.Cours.CourseName)</th>
             <th>
                 @Html.DisplayNameFor(model => model.EnrollmentDate)
             </th>
@@ -19,7 +20,7 @@
                 @Html.DisplayNameFor(model => model.ScheduledClass.InstructorName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Student.FirstName)
+                @Html.DisplayNameFor(model => model.Student.FullName)
             </th>
             <th></th>
         </tr>
@@ -28,6 +29,7 @@
         @foreach (var item in Model)
         {
             <tr>
+                <td>@Html.DisplayFor(modelItem => item.ScheduledClass.Cours.CourseName)</td>
                 <td>
                     @Html.DisplayFor(modelItem => item.EnrollmentDate)
                 </td>
@@ -35,7 +37,7 @@
                     @Html.DisplayFor(modelItem => item.ScheduledClass.InstructorName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Student.FirstName)
+                    @Html.DisplayFor(modelItem => item.Student.FullName)
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.EnrollmentID }) |
