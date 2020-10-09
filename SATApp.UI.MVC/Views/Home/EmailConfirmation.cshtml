@@ -1,0 +1,22 @@
+﻿@model SATApp.UI.MVC.Models.ContactViewModel
+
+@{
+    ViewBag.Title = "Message Confirmed";
+}
+
+<div class="form-style text-center">
+    <h2>@ViewBag.Title</h2>
+    <h3>Thanks for the message @Model.Name!<br />  We will respond to you as soon as poosible at: @Model.Email!</h3>
+    <p>@DateTime.Now-Subject: @Model.Subject - @Model.Message</p>
+</div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $('html,body').animate({
+                scrollTop: $("#main").offset().top
+            },1000);
+        });
+    </script>
+}

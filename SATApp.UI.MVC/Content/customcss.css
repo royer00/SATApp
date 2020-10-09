@@ -1,0 +1,41 @@
+﻿.form-style {
+    border: 2px solid red;
+    box-shadow: 5px 5px black;
+    z-index: 1;
+    background-color: white;
+}
+
+    .form-style input {
+        box-shadow: 2px 2px black;
+    }
+
+
+
+textarea#Message {
+    box-shadow: 2px 2px black;
+}
+
+
+input.btn.btn-danger {
+    box-shadow: 2px 2px black;
+}
+
+div#DataTables_Table_0_wrapper {
+    margin: -1em 2em 2em 2em;
+}
+
+.form-horizontal.col-md-7.offset-3.edit-form {
+    border: 2px solid red;
+    margin-left: 20%;
+    box-shadow: 10px 10px black;
+    padding: 1.5em;
+    margin-bottom: 10%;
+}
+
+    .form-horizontal.col-md-7.offset-3.edit-form label {
+        font-weight: bold;
+    }
+
+    .form-horizontal.col-md-7.offset-3.edit-form input, select {
+        box-shadow: 2px 2px black;
+    }
