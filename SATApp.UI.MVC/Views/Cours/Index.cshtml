@@ -1,0 +1,71 @@
+﻿@model IEnumerable<SATApp.DATA.EF.Cours>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="text-center mt-3">Courses</h2>
+@if (User.IsInRole("Admin"))
+{
+    <p class="text-center">
+        @Html.ActionLink("Add A Course", "Create", null, new { @class = "btn btn-lg btn-danger" })
+    </p>
+    <p class="text-center">
+        @Html.ActionLink("View Inactive Courses", "Inactive", null, new { @class = "btn btn-lg btn-primary" })
+    </p>
+}
+
+<table class="table myTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseName)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.CreditHours)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Curriculum)
+            </th>
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CourseName)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreditHours)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Curriculum)
+                </td>
+
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.CourseID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.CourseID }) |
+                    @Html.ActionLink("Deactivate", "Delete", new { id = item.CourseID })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+@section scripts{
+    <script>
+    $(document).ready(function () {
+        $('html,body').animate({
+            scrollTop: $("#main").offset().top
+        }, 1000);
+    });
+    </script>
+
+}

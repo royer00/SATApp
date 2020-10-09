@@ -1,0 +1,85 @@
+﻿@model SATApp.DATA.EF.Cours
+
+@{
+    ViewBag.Title = "Activate/Deactivate";
+}
+
+<div class="text-center">
+    <h2>@ViewBag.Title</h2>
+
+    <h3 class="text-danger font-weight-bold">
+        Are you sure you want to @if (Model.IsActive)
+        {
+            <span>deactivate</span>
+        }
+        else
+        {
+            <span>activate</span>
+        }
+        this?
+    </h3>
+    <div>
+
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.CourseName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CourseName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CourseDescription)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CourseDescription)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CreditHours)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CreditHours)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Curriculum)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Curriculum)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Notes)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Notes)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IsActive)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color" style="margin-right: 5%;">
+                <input type="submit" value="
+                   Change Status" class="btn btn-default text-primary" /> |
+                @Html.ActionLink("Exit", "Index")
+            </div>
+        }
+    </div>
+</div>
