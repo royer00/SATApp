@@ -203,9 +203,13 @@ namespace SATApp.UI.MVC.Controllers
             {
                 student.SSID = 7;
             }
-            else
+            else if(student.SSID == 7)
             {
                 student.SSID = 2;
+            }
+            else
+            {
+                return RedirectToAction("Edit");
             }
             db.SaveChanges();
             return RedirectToAction("Index");
