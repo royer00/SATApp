@@ -1,0 +1,58 @@
+﻿@model IEnumerable<SATApp.DATA.EF.Enrollment>
+
+@{
+    ViewBag.Title = "Enrollments";
+}
+
+<h2 class="text-center mt-5">@ViewBag.Title</h2>
+
+<p class="text-center">
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-danger" })
+</p>
+<table class="table myTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EnrollmentDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ScheduledClass.InstructorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Student.FirstName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EnrollmentDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ScheduledClass.InstructorName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Student.FirstName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.EnrollmentID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.EnrollmentID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.EnrollmentID })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+@section scripts{
+    <script>
+    $(document).ready(function () {
+        $('html,body').animate({
+            scrollTop: $("#main").offset().top
+        }, 1000);
+    });
+    </script>
+}
