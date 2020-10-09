@@ -1,66 +1,76 @@
 ﻿@model SATApp.DATA.EF.ScheduledClass
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Scheduled Class Details";
 }
 
-<h2>Details</h2>
+<h2 class="text-center mb-5 mt-5">@ViewBag.Title</h2>
+<div class="form-style col-md-6 offset-3 text-center mb-5">
+    <div>
 
-<div>
-    <h4>ScheduledClass</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.StartDate)
-        </dt>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.StartDate)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.StartDate)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EndDate)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.EndDate)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.EndDate)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.InstructorName)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.InstructorName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.InstructorName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.InstructorName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Location)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Location)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Location)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Location)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Cours.CourseName)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Cours.CourseName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Cours.CourseName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Cours.CourseName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ScheduledClassStatus.SCSName)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.ScheduledClassStatus.SCSName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ScheduledClassStatus.SCSName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.ScheduledClassStatus.SCSName)
+            </dd>
 
-    </dl>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ScheduledClassID }, new { @class = "btn btn-danger offset-1" })
+        @Html.ActionLink("Exit", "Index", null, new { @class = "btn btn-primary offset-5" })
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ScheduledClassID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+@section scripts{
+    <script>
+    $(document).ready(function () {
+        $('html,body').animate({
+            scrollTop: $("#main").offset().top
+        }, 1000);
+    });
+    </script>
+}
