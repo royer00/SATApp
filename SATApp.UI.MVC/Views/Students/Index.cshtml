@@ -1,0 +1,101 @@
+﻿@model IEnumerable<SATApp.DATA.EF.Student>
+
+@{
+    ViewBag.Title = "Students";
+}
+
+<h2 class="text-center mt-5">@ViewBag.Title</h2>
+
+@if (User.IsInRole("Admin"))
+{
+    <p class="text-center">
+        @Html.ActionLink("Create A New Student", "Create", null, new { @class = "btn btn-lg btn-danger" })
+    </p>
+    <p class="text-center">
+        @Html.ActionLink("View Withdrawn", "Withdrawn", null, new { @class = "btn btn-lg btn-success" })
+    </p>
+}
+
+<table class="table myTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Major)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentAddress)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+
+            <th>
+                Status
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Where(x => x.SSID != 7))
+        {
+            <tr>
+                <td>
+                    <a href="@Url.Action("Details", new { id = item.StudentID })"> @Html.DisplayFor(modelItem => item.FullName)</a>
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Major)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentAddress)
+                </td>
+
+                <td>
+                    @string.Format("{0: (###) ###-####}", item.Phone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentStatus.SSName)
+                </td>
+                @if (User.IsInRole("Admin"))
+                {
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.StudentID }) |
+                        @if (item.Enrollments.Count == 0)
+                        {
+                            @Html.ActionLink("Delete", "Delete", new { id = item.StudentID })
+                        }
+                        else
+                        {
+                            <span class="font-weight-bold">In Use!</span>
+                        }
+
+                    </td>
+                }
+
+            </tr>
+        }
+    </tbody>
+
+</table>
+@section scripts{
+    <script>
+    $(document).ready(function () {
+        $('html,body').animate({
+            scrollTop: $("#main").offset().top
+        }, 1000);
+    });
+    </script>
+
+}
