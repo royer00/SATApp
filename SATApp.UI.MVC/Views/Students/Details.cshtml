@@ -8,9 +8,9 @@
 <div class=" text-center col-md-10 offset-1 ">
     <h2>@Model.FullName</h2>
     <img src="~/Content/assets/img/@Model.PhotoURL" alt="@Model.FullName" />
-    <div class="form-style mt-5">
+    <div class="form-style mt-5 ">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4" style="padding: 2em;">
                 <h4>
                     @Html.LabelFor(model => model.Major): <span class="text-primary"> @Model.Major </span>
                 </h4>
@@ -18,7 +18,7 @@
                     Student Status : <span class="text-primary">@Model.StudentStatus.SSName</span>
                 </h4>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4" style="padding: 2em;">
                 <h4>
                     @Html.LabelFor(model => model.StudentAddress): <span class="text-primary">@Model.StudentAddress</span>
                 </h4>
@@ -26,7 +26,7 @@
                     @Html.LabelFor(model => model.Phone): <span class="text-primary">@Model.Phone</span>
                 </h4>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4" style="padding: 2em;">
                 <h4>
                     @Html.LabelFor(model => model.StudentID): <span class="text-primary">@Model.StudentID</span>
                 </h4>
@@ -45,6 +45,11 @@
                 <span class="text-primary"> @item.ScheduledClass.Cours.CourseName</span>
             }
         </h4>
+
+        <p>
+            @Html.ActionLink("Edit Student", "Edit", new { id = Model.StudentID }, new { @class="btn btn-danger"}) 
+            @Html.ActionLink("Exit", "Index", null, new { @class="btn btn-primary"})
+        </p>
     </div>
 </div>
 <p>
