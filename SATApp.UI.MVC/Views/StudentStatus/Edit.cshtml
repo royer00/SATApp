@@ -11,7 +11,7 @@
     {
         @Html.AntiForgeryToken()
 
-        <div class="form-horizontal">
+        <div class="form-horizontal offset-1">
            
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.SSID)
@@ -34,7 +34,8 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-danger" />
+                    <input type="submit" value="Save" class="btn btn-danger offset-2" />
+                    @Html.ActionLink("Cancel", "Index", null, new { @class="btn btn-primary offset-5"})
                 </div>
             </div>
         </div>
@@ -42,9 +43,16 @@
 </div>
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+   
 </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+<script>
+    $(document).ready(function () {
+        $('html,body').animate({
+            scrollTop: $("#main").offset().top
+        }, 1000);
+    });
+</script>
 }

@@ -1,14 +1,13 @@
 ﻿@model SATApp.DATA.EF.StudentStatus
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Student Status Details";
 }
 
-<h2>Details</h2>
+<h2 class="text-center mt-5">@ViewBag.Title</h2>
 
-<div>
-    <h4>StudentStatus</h4>
-    <hr />
+<div class="form-style text-center col-md-8 offset-2 mb-5">
+
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.SSName)
@@ -27,8 +26,18 @@
         </dd>
 
     </dl>
+    <p>
+        @Html.ActionLink("Edit Details", "Edit", new { id = Model.SSID }, new { @class = "btn btn-danger" })
+        @Html.ActionLink("Exit", "Index", null, new { @class="btn btn-primary" })
+    </p>
+
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.SSID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+@section scripts{
+<script>
+    $(document).ready(function () {
+        $('html,body').animate({
+            scrollTop: $("#main").offset().top
+        }, 1000);
+    });
+</script>
+    }
