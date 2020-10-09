@@ -1,36 +1,47 @@
 ﻿@model IEnumerable<SATApp.UI.MVC.Models.ApplicationUser>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Users";
 }
 
-<h2>Index</h2>
+<h2 class="text-center mt-5">@ViewBag.Title</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
+<p class="text-center">
+    @Html.ActionLink("Add a User", "Create", null, new { @class = "btn btn-danger" })
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.UserName)
-        </th>
-        <th>
-
-        </th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<table class="table myTable">
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserName)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
-        </tr>
-    }
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
 
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
+@section scripts{
+    <script>
+    $(document).ready(function () {
+        $('html,body').animate({
+            scrollTop: $("#main").offset().top
+        }, 1000);
+    });
+    </script>
+}
