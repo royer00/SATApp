@@ -1,0 +1,82 @@
+﻿@model IEnumerable<SATApp.DATA.EF.ScheduledClass>
+
+@{
+    ViewBag.Title = "Scheduled Classes";
+}
+
+<h2 class="text-center mt-5">@ViewBag.Title</h2>
+
+<p class="text-center">
+    @Html.ActionLink("Add a Schduled Class", "Create", null, new { @class = "btn btn-danger" })
+</p>
+
+<table class="table myTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cours.CourseName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InstructorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+
+            <th>
+                Scheduled Class Status Name
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cours.CourseName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InstructorName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ScheduledClassStatus.SCSName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ScheduledClassID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ScheduledClassID }) <br />
+
+                    @Html.ActionLink("Activate", "Delete", new { id = item.ScheduledClassID }, new { @class = "btn btn-danger" })
+                    @Html.ActionLink("Deactivate", "Delete", new { id = item.ScheduledClassID }, new { @class = "btn btn-primary" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts{
+    <script>
+    $(document).ready(function () {
+        $('html,body').animate({
+            scrollTop: $("#main").offset().top
+        }, 1000);
+    });
+    </script>
+}
